@@ -8,9 +8,12 @@ class Login extends React.Component {
           <label htmlFor="email"><b>Email</b></label>
           <input type="email" placeholder="Enter Email" name="email" required />
 
-          <label htmlFor="psw"><b>Password</b></label>
-          <input type="password" placeholder="Enter Password" name="psw" required />
-              
+          <label htmlFor="password"><b>Password</b></label>
+          <input type="password" placeholder="Enter Password" name="password" required />
+          
+          <div className="checkbox">
+            <label><input type="checkbox" name="remember"></input> Remember me</label>
+          </div>
           <button type="submit">Login</button>
         </div>
         <div className="container-fluid" style={{backgroundColor:'white'}}>

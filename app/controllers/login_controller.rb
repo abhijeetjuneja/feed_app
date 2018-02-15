@@ -1,10 +1,23 @@
 class LoginController < ApplicationController
+  include LoginHelper
   def login_form
 
   end
 
   def login
-    logger.debug "#{User}"
+    user = User.find_by(email: params[:email].downcase)
+    if user && user.authenticate(params[:password])
+      log_in user 
+      params[:remember] == 'on' ? remember(user) : forget(user)
+      logger.debug "Logged in"
+      else
+      logger.debug "Some error occurred"
+    end
+  end
+
+  def logout
+    logout if logged_in
+    p "logged out"
   end
 
   def signup_form
