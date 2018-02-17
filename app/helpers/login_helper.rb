@@ -65,7 +65,6 @@ module LoginHelper
     forget(current_user)
     session.delete(:user_id)
     @current_user = nil
-    redirect_to '/login'
   end
 
 end
