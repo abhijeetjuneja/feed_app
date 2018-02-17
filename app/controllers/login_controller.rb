@@ -10,14 +10,15 @@ class LoginController < ApplicationController
       log_in user 
       params[:remember] == 'on' ? remember(user) : forget(user)
       logger.debug "Logged in"
+      redirect_to '/'
       else
       logger.debug "Some error occurred"
     end
   end
 
   def logout
-    logout if logged_in
-    p "logged out"
+    log_out if logged_in
+    redirect_to '/login'
   end
 
   def signup_form
@@ -29,6 +30,7 @@ class LoginController < ApplicationController
     logger.debug "#{user_params}"
     if @user.save
       logger.debug "User created!"
+      redirect_to '/login'
     else
       logger.debug "Some Error occurred"
     end
