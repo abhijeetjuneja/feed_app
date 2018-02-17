@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class="row">
     <% if logged_in %>
-      <%= react_component 'Home' %>
+      <%= react_component('Home', { feeds: feeds ,user: current_user}) %>
     <% else %>
       <div class="col-md-6 col-md-offset-3" style="padding : 50px;">
         <h1>Welcome to Feeds !</h1>

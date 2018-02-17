@@ -8,6 +8,10 @@ module LoginHelper
 
   end
 
+  def get_name(id)
+    @name = User.find(id).name
+  end
+
   def current_user?(user)
     user = current_user
   end
@@ -26,7 +30,6 @@ module LoginHelper
 
   def remember(user)
     p "remembered"
-    byebug
     user.remember
     cookies.permanent.signed[:user_id] = user.id
     cookies.permanent[:remember_token] = user.remember_token
