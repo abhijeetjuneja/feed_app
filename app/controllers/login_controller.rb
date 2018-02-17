@@ -1,5 +1,11 @@
 class LoginController < ApplicationController
   include LoginHelper
+
+  def list
+    @users  = User.where.not(id: current_user.id)
+    p "#{current_user.id}"
+    @relationship = Relationship.find_by(follower_id: current_user.id)
+  end
   def login_form
 
   end
@@ -23,6 +29,14 @@ class LoginController < ApplicationController
 
   def signup_form
     
+  end
+
+  def follow
+   follow_user(params[:id])
+  end
+
+  def unfollow
+    unfollow_user(params[:id])
   end
 
   def signup

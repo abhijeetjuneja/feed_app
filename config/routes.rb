@@ -8,4 +8,12 @@ Rails.application.routes.draw do
 
   get '/signup' ,to: 'login#signup_form'
   post '/signup' ,to: 'login#signup'
+
+  get 'feeds/add', to: 'feeds#add_form'
+  post 'feeds/add', to: 'feeds#add'
+  post 'feeds/delete', to: 'feeds#delete'
+
+  get '/users', to: 'login#list'
+  post '/users/follow', to: 'login#follow'
+  post '/users/unfollow', to: 'login#unfollow'
 end

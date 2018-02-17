@@ -8,6 +8,10 @@ module LoginHelper
 
   end
 
+  def get_name(id)
+    @name = User.find(id).name
+  end
+
   def current_user?(user)
     user = current_user
   end
@@ -21,17 +25,34 @@ module LoginHelper
         log_in user
         @current_user = user
       end
-    end
+    end 
   end
 
   def remember(user)
     p "remembered"
-    byebug
     user.remember
     cookies.permanent.signed[:user_id] = user.id
     cookies.permanent[:remember_token] = user.remember_token
 
   end
+
+  def follow_user(other_user_id)
+    p "Follow called"
+    @relationship = Relationship.new(follower_id: current_user.id, followed_id: other_user_id)
+    if @relationship.save
+      p "relationship created!"
+      redirect_to '/users'
+    else
+      p "Some Error occurred"
+    end
+  end
+
+  def unfollow_user(other_user_id)
+    @relationship = Relationship.find_by(follower_id: current_user.id, followed_id: other_user_id)
+    @relationship.destroy
+    redirect_to '/users'
+  end
+
 
   # Forgets a persistent session.
   def forget(user)
