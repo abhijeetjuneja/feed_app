@@ -45,7 +45,7 @@ class Home extends React.Component {
                </h4>
                <li>{item.content}</li><br />
                {ref.state.value != '' ? <form action="/feeds/delete" method="post"><input type="hidden" name="id" value={item.id} /><button className="btn btn-danger" type="submit">Delete</button></form> : null}<br /><br /></div>
-             }) : null
+             }) : <h1>No Feeds Found</h1>
             }
             </ul>
           </div>

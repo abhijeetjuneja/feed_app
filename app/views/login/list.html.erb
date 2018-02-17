@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-6 col-md-offset-3" style="padding : 50px;">
-      <%= react_component('Users', { users: @users}) %>
+      <%= react_component('Users', { users: @users , relationship: @relationship , current_user: current_user}) %>
     </div>
   </div>
 </div>
