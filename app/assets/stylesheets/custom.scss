@@ -242,3 +242,14 @@ span.psw {
 .section{
   background-color:white;
 }
+
+.users{
+  background-color:white;
+}
+
+.user-entry{
+  cursor:pointer;
+  &:hover{
+    color:blue;
+  }
+}

@@ -1,5 +1,9 @@
 class LoginController < ApplicationController
   include LoginHelper
+
+  def list
+    @users  = User.all
+  end
   def login_form
 
   end

@@ -12,4 +12,6 @@ Rails.application.routes.draw do
   get 'feeds/add', to: 'feeds#add_form'
   post 'feeds/add', to: 'feeds#add'
   post 'feeds/delete', to: 'feeds#delete'
+
+  get '/users', to: 'login#list'
 end
