@@ -12,13 +12,15 @@ class LoginController < ApplicationController
 
   def login
     user = User.find_by(email: params[:email].downcase)
+    p "#{user.authenticate(params[:password])}"
     if user && user.authenticate(params[:password])
       log_in user 
       params[:remember] == 'on' ? remember(user) : forget(user)
-      logger.debug "Logged in"
+      p "Logged in"
       redirect_to '/'
-      else
-      logger.debug "Some error occurred"
+    else
+      p "Some error occurred"
+      redirect_to '/login'
     end
   end
 
